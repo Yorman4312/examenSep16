@@ -1,0 +1,23 @@
+{
+  "name": "examensep16",
+  "version": "1.0.0",
+  "description": "Examen ACA Septiembre 16/25",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Api",
+    "Clean",
+    "Arquitecture"
+  ],
+  "author": "YormanO",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.1"
+  }
+}
