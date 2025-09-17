@@ -4,6 +4,7 @@ const AccountSchema = new mongoose.Schema({
   nroCuenta: Number,
   nombreCliente: String,
   saldo: Number,
+  totalTrans: Number,
 });
 
 const AccountModel = mongoose.model("Account", AccountSchema);
@@ -19,11 +20,11 @@ class AccountRepositoryMongo {
   async findById(id) {
     return await AccountModel.findById(id);
   }
-  async consignar(id, saldo, consignar) {
-    return await AccountModel.findByIdAndUpdate(id, saldo = saldo + consignar, { new: true });
+  async update(id, accountData) {
+    return await AccountModel.findByIdAndUpdate(id, accountData, { new: true });
   }
-  async retirar(id, saldo, retirar) {
-    return await AccountModel.findByIdAndUpdate(id, saldo = saldo - retirar, { new: true });
+  async delete(id) {
+    return await AccountModel.findByIdAndDelete(id);
   }
 }
 

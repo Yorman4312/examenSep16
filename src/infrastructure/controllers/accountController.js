@@ -1,8 +1,8 @@
 import CreateAccount from "../../application/use-cases/CreateAccount.js";
+
 import GetAccounts from "../../application/use-cases/GetAccounts.js";
 import GetAccountById from "../../application/use-cases/GetAccountById.js";
-import ConsignarAccount from "../../application/use-cases/ConsignarAccount.js";
-import RetirarAccount from "../../application/use-cases/RetirarAccount.js";
+import UpdateAccount from "../../application/use-cases/UpdateAccount.js";
 import DeleteAccount from "../../application/use-cases/DeleteAccount.js";
 import AccountRepositoryMongo from "../repositories/AccountRepositoryMongo.js";
 
@@ -39,22 +39,11 @@ export const getAccountById = async (req, res) => {
   }
 };
 
-export const consignarAccount = async (req, res) => {
+export const updateAccount = async (req, res) => {
   try {
-    const consignarAccount = new ConsignarAccount(accountRepository);
-    const account = await await consignarAccount.execute(req.params.id, req.saldo, req.consignar);
-    if(!account) return res.status(404).json({ message: "❌ Usuario no encontrado ❌" });
-    res.json(account);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
-
-export const retirarAccount = async (req, res) => {
-  try {
-    const retirarAccount = new RetirarAccount(accountRepository);
-    const account = await retirarAccount.execute(req.params.id, req.body, req.retirar);
-    if(!account) return res.status(404).json({ message: "❌ Usuario no encontrado ❌" });
+    const updateAccount = new UpdateAccount(accountRepository);
+    const account = await updateAccount.execute(req.params.id, req.body);
+    if(!account) return res.sratus(404).json({ message: "❌ Cuenta no encontrada ❌" });
     res.json(account);
   } catch (err) {
     res.status(500).json({ error: err.message });

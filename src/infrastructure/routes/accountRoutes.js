@@ -3,8 +3,7 @@ import {
   createAccount,
   getAccounts,
   getAccountById,
-  consignarAccount,
-  retirarAccount,
+  updateAccount,
   deleteAccount
 } from "../controllers/accountController.js";
 
@@ -13,8 +12,7 @@ const router = Router();
 router.post("/", createAccount);
 router.get("/", getAccounts);
 router.get("/:id", getAccountById);
-router.put("/consignar/:id", consignarAccount);
-router.put("/retirar/:id", retirarAccount);
+router.put("/:id", updateAccount)
 router.delete("/:id", deleteAccount);
 
 export default router;
