@@ -7,7 +7,7 @@ export default class UpdateAccount {
     const account = await this.accountRepository.findById(id);
     if (!account) return null;
 
-    Object.assign(account, accountData); // Mezcla los datos nuevos
+    Object.assign(account, accountData);
     account.totalTrans = (account.totalTrans || 0) + 1;
 
     return await this.accountRepository.update(id, account);
