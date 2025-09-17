@@ -4,6 +4,12 @@ export default class UpdateAccount {
   }
 
   async execute(id, accountData) {
-    return await this.accountRepository.update(id, accountData);
+    const account = await this.accountRepository.findById(id);
+    if (!account) return null;
+
+    Object.assign(account, accountData); // Mezcla los datos nuevos
+    account.totalTrans = (account.totalTrans || 0) + 1;
+
+    return await this.accountRepository.update(id, account);
   }
 }

@@ -4,7 +4,7 @@ const AccountSchema = new mongoose.Schema({
   nroCuenta: Number,
   nombreCliente: String,
   saldo: Number,
-  totalTrans: Number,
+  totalTrans: { type: Number, required: true, default: 0 },
 });
 
 const AccountModel = mongoose.model("Account", AccountSchema);
