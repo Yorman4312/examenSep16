@@ -3,8 +3,10 @@ import mongoose from "mongoose";
 const AccountSchema = new mongoose.Schema({
   nroCuenta: Number,
   nombreCliente: String,
-  saldo: Number,
+  saldo: { type: Number, requiered: true },
   totalTrans: { type: Number, required: true, default: 0 },
+  consignar: { type: Number, required: true, default: 0 },
+  retirar: { type: Number, required: true, default: 0 },
 });
 
 const AccountModel = mongoose.model("Account", AccountSchema);
